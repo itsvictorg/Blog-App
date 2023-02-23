@@ -1,0 +1,39 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "blog app webpage",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo",
+    "start": "node server.js",
+    "seed": "node seeds/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://https://github.com/itsvictorg/Blog-App"
+  },
+  "keywords": [
+    "blog",
+    "app"
+  ],
+  "author": "Victor Gonzalez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsvictorg/Blog-App/issues"
+  },
+  "homepage": "https://github.com/itsvictorg/Blog-App#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^16.0.3",
+    "express-handlebars": "^6.0.7",
+    "express-session": "^1.17.3",
+    "express.js": "^1.0.0",
+    "handlebars": "^4.7.7",
+    "materialize-css": "^1.0.0-rc.2",
+    "mysql2": "^3.1.0",
+    "sequelize": "^6.28.0",
+    "uninstall-all-modules": "^1.0.5"
+  }
+}

@@ -1,0 +1,57 @@
+h1 {
+    margin-bottom: 4rem;
+}
+
+#card-1 {
+    padding: 80px;
+    background-color: #DEEEFF;
+    margin: 100px;
+    border-radius: 15px;
+}
+
+#card-2 {
+    padding: 40px;
+    margin: 100px;
+    background-color: #DEEEFF;
+    width: 54vw;
+    border-radius: 15px;
+
+}
+
+#building-image {
+    background-image: url('../images/building.jpg');
+}
+
+#office-image {
+    background-image: url('../images/office.jpg');
+}
+
+#livingroom-image {
+    background-image: url('../images/livingroom.jpg');
+}
+
+#bedroom-image {
+    background-image: url('../images/bedroom.jpg');
+}
+
+#pool-image {
+    background-image: url('../images/pool.jpg');
+}
+
+#balcony-image {
+    background-image: url('../images/balcony.jpg');
+}
+
+.background-images {
+    background-size: cover;
+    height: 100%;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btns-3 {
+    margin: 15px;
+    width: 500px;
+}

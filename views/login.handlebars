@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="background-images" src="../assets/images/background.jpg">
+
+        <form class="row container" id="card-container">
+
+
+            <div class="card-content padding-100px" id="card-1">
+
+
+                <form>
+                    <h1 class="center-align">The Tech Blog</h1>
+                     <h4 class="left-align">Log In</h4>
+
+                    <div class="input-field">
+                        <input type="text" id="username-input">
+                        <label class="active" for="name">Username</label>
+                    </div>
+
+                    <div class="input-field">
+                        <input type="password" id="password-input">
+                        <label class="active" for="name">Password</label>
+                    </div>
+
+                    <center>
+                        <button class="btn btn-large waves-effect waves-light z-depth-3 light-blue darken-3"
+                            id='enter'>Login
+                            <i id="enter" class="material-icons right">send</i>
+                        </button>
+                        <a href='/register' class="btn btn-large waves-effect waves-light z-depth-3 light-blue darken-3"
+                            id='enter'>Register
+                            <i id="enter" class="material-icons right">create</i></a>
+                        </button>
+                        <div id="wrong-password"></div>
+                    </center>
+            </div>
+
+
+        </form>
+    </div>
+    <script src="./js/login.js"></script>
+</body>
+
+
+</html>
