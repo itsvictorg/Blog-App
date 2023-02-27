@@ -25,3 +25,4 @@ no
 # Contact Information 
 * GitHub Username: itsvictorg
 * Contact Email: itsvictorg@gmail.com
+![tech blog screenshot](https://user-images.githubusercontent.com/72170737/221483962-4f1fd03c-4014-4153-a7aa-0f68797f35c0.png)
