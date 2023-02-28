@@ -17,6 +17,27 @@
     </div>
   </nav>
 
+  {{#if posts.length}}
+<section>
+  <h2>Your Posts</h2>
+  <ol class="post-list">
+    {{#each posts as |post|}}
+    <li>
+      {{> dashboard-post-info post}}      
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{else}}
+<center>
+<section>
+  <h3>You haven't posted anything yet</h3>
+</section>
+</center>
+{{/if}}
+<center>
+<button type="submit" class="btn btn-large waves-effect waves-light z-depth-3 light-blue darken-3" id = "new-post"><a href="/dashboard/new">Add New Post</a></button>
+</center>
     <script src="./js/logout.js"></script>
 </body>
 
