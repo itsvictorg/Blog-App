@@ -25,4 +25,6 @@ router.put('/user', async (req, res) => {
       res.status(500).json(err);
     }
 });
+
+router.put('/post')
 module.exports = router;
