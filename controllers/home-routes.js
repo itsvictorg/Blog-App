@@ -7,9 +7,6 @@ router.get('/', async (req, res) => {
     res.redirect('/homepage');
 })
 
-router.get('/dashboard', async (req, res) => {
-    res.render('dashboard')
-});
 
 router.get('/homepage', (req, res) => {
     router.get('/', (req, res) => {

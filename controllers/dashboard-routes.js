@@ -3,8 +3,13 @@ const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-router.get('/', withAuth, (req, res) => {
-  Post.findAll({
+router.get('/', async (req, res) => {
+ console.log(req.session)
+ if(!req.session.loggedIn){
+   res.redirect('/login')
+  }
+  
+  await Post.findAll({
     where: {
       user_id: req.session.user_id
     },
@@ -31,14 +36,14 @@ router.get('/', withAuth, (req, res) => {
     res.render('dashboard', { posts, loggedIn: true });
   })
   .catch(err => {
-    console.log(err);
+    
     res.status(500).json(err);
   });
 });
 
 
-router.get('/edit/:id', withAuth, (req, res) => {
-  Post.findOne({
+router.get('/edit/:id', async (req, res) => {
+ await Post.findOne({
     where: {
       id: req.params.id
     },
