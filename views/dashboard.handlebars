@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Homepage</title>
+    <title>Dashboard</title>
 </head>
 
 <body>
@@ -22,9 +22,9 @@
   <h2>Your Posts</h2>
   <ol class="post-list">
     {{#each posts as |post|}}
-    <li>
-      {{> dashboard-post-info post}}      
-    </li>
+    <div>
+      {{> post-info post}}      
+    </div>
     {{/each}}
   </ol>
 </section>

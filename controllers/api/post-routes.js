@@ -65,12 +65,12 @@ router.get('/:id', (req, res) => {
 
 router.post('/', withAuth, (req, res) => {  
   const randomId = Math.trunc(Math.random() * (9999 - 1111) + 1111)
-
+console.log(req.session.data.id)
   Post.create({
     id: randomId,
     title: req.body.title,
     post_text: req.body.post_text,
-    user_id: req.session.id
+    user_id: req.session.data.id
     
   })
     .then(dbPostData => res.json(dbPostData))

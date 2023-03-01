@@ -8,9 +8,10 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/homepage', (req, res) => {
-    router.get('/', (req, res) => {
-        Post.findAll({
+router.get('/homepage', async (req, res) => {
+    
+      try{  
+      const dbPostData = await Post.findAll({
           attributes: [
             'id',
             'title',
@@ -32,22 +33,33 @@ router.get('/homepage', (req, res) => {
             }
           ]
         })
-          .then(dbPostData => {
-            const posts = dbPostData.map(post => post.get({ plain: true }));
+        const posts = dbPostData.map(post => post.get({ plain: true }));
            
             res.render('homepage', { 
               posts,
               loggedIn: req.session.loggedIn 
             });
-          })
-          .catch(err => {
+          }catch(err) {
             console.log(err);
             res.status(500).json(err);
-          });
-      });
-    res.render('homepage');
+          };
+        });
+          //.then(dbPostData => {
+        //  const posts = dbPostData.map(post => post.get({ plain: true }));
+        // 
+        //  res.render('homepage', { 
+        //    posts,
+        //    loggedIn: req.session.loggedIn 
+        //  });
+        //})
+        //.catch(err => {
+        //  console.log(err);
+        //  res.status(500).json(err);
+        //});
+      //
+    //res.render('homepage');
 
-});
+
 
 router.get('/post/:id', (req, res) => {
     Post.findOne({
