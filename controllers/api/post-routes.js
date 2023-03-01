@@ -10,14 +10,14 @@ router.get('/', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: ['user_name']
       },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['user_name']
         }
       }
     ]
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: ['user_name']
       },
       {
         model: Comment,
@@ -64,10 +64,14 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {  
+  const randomId = Math.trunc(Math.random() * (9999 - 1111) + 1111)
+
   Post.create({
+    id: randomId,
     title: req.body.title,
     post_text: req.body.post_text,
-    user_id: req.session.user_id
+    user_id: req.session.id
+    
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {

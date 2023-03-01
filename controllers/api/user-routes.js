@@ -1,27 +1,23 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Post } = require('../../models');
 
 //CREATE new user
  router.post('/register', async (req, res) => {
   const randomId = Math.trunc(Math.random() * (9999 - 1111) + 1111)
-  const randonRent = Math.trunc(Math.random() * (2000-1000) + 1000 )
+  
   
   try {
     const dbUserData = await User.create({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
       user_name: req.body.username,
       password: req.body.password,
       id: randomId,
       
     });
 
-    
-
-    
     req.session.save(() => {
       
       req.session.data = [dbUserData]
+      
       console.log(req.session.data)
       
 
@@ -36,12 +32,6 @@ const { User } = require('../../models');
     console.log(err);
     res.status(500).json(err);
   }
-
-  
- 
-  
-    
- 
 
 });
 

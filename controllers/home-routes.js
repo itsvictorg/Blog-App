@@ -23,12 +23,12 @@ router.get('/homepage', (req, res) => {
               attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
               include: {
                 model: User,
-                attributes: ['username']
+                attributes: ['user_name']
               }
             },
             {
               model: User,
-              attributes: ['username']
+              attributes: ['user_name']
             }
           ]
         })
@@ -72,12 +72,12 @@ router.get('/post/:id', (req, res) => {
           ],
           include: {
             model: User,
-            attributes: ['username']
+            attributes: ['user_name']
           }
         },
         {
           model: User,
-          attributes: ['username']
+          attributes: ['user_name']
         }
       ]
     })
@@ -106,7 +106,11 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/login', (req, res) =>{
+  if(!req.session.loggedIn){
     res.render('login')
+  } else{
+    res.redirect('/homepage');
+  }
 })
 
    

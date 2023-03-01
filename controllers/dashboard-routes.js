@@ -3,43 +3,57 @@ const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-router.get('/', async (req, res) => {
- console.log(req.session)
- if(!req.session.loggedIn){
-   res.redirect('/login')
-  }
-  
-  await Post.findAll({
+router.get('/', withAuth, async (req, res) => {
+ 
+  try{
+    const dbPostData = await Post.findAll({
     where: {
-      user_id: req.session.user_id
+      user_id: req.session.id
     },
     attributes: ['id', 'title', 'post_text', 'created_at'],
     order: [['created_at', 'DESC']],
     include: [
       {
         model: User,
-        attributes: ['username']
+        attributes: ['user_name']
       },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['user_name']
         }
       }
     ]
   })
-  .then(dbPostData => {
-    
-    const posts = dbPostData.map(post => post.get({ plain: true }));
-    res.render('dashboard', { posts, loggedIn: true });
-  })
-  .catch(err => {
-    
-    res.status(500).json(err);
-  });
+  const posts = dbPostData.map(post => post.get({ plain: true }));
+
+  console.log(posts)
+
+  res.render('dashboard', { posts, loggedIn: true });
+  
+} catch(err) {
+  console.log(err)
+  res.status(500).json(err);
+};
 });
+
+
+
+//.then(dbPostData => {
+//    
+//    const posts = dbPostData.map(post => post.get({ plain: true }));
+//    console.log(posts)
+//    res.render('dashboard', { posts, loggedIn: true });
+//
+//  })
+//  .catch(err => {
+//   
+//    console.log(err)
+//    res.status(500).json(err);
+//  });
+//});
 
 
 router.get('/edit/:id', async (req, res) => {
@@ -83,6 +97,7 @@ router.get('/edit/:id', async (req, res) => {
 });
 
 router.get('/new', (req, res) => {
+  console.log(req.session)
   res.render('new-post');
 });
 

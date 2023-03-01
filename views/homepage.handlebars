@@ -17,13 +17,24 @@
     </div>
   </nav>
 
-<ol class="post-list">
-  {{#each posts as |post|}}
-  <li>
-    {{> post-info post}}
-  </li>
-  {{/each}}
-</ol>
+{{#if posts.length}}
+<section>
+  <h2></h2>
+  <ol class="post-list">
+    {{#each posts as |post|}}
+    <li>
+      {{> dashboard-post-info post}}      
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{else}}
+<center>
+<section>
+  <h3>No posts made yet</h3>
+</section>
+</center>
+{{/if}}
       
               
 
