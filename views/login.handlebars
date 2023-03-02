@@ -1,56 +1,61 @@
 <html>
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Login</title>
 </head>
 
 <body>
     
 
-    <nav>
-    <div class="nav-wrapper">
+    <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    })
+  </script>
+
+  <nav class = "blue">
+    <div class = "nav-wrapper">
       <a href="#" class="brand-logo">The Tech Blog</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/homepage">Home</a></li>
-          <li><a href="/Dashboard">Dashboard</a></li>
-          <li><a href="/login">Log In</a></li>
-          <li><a href = "" id = 'logout'>Logout</a>
-        </ul>
+      
+      <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+        <i class ="material-icons">menu</i>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/homepage">Home</a></li>
+        <li><a href="/Dashboard">Dashboard</a></li>
+        <li><a href="/login">Log In</a></li>
+        <li><a href = "" id = 'logout'>Logout</a>
+      </ul>
     </div>
   </nav>
 
-        <form class="row container" id="card-container">
-
-
-            <div class="card-content padding-100px" id="card-1">
-
-
-                <form>
-                    
-                     <h4 class="left-align">Log In</h4>
-
-                    <div class="input-field">
-                        <input type="text" id="username-input">
-                        <label class="active" for="name">Username</label>
-                    </div>
-
-                    <div class="input-field">
-                        <input type="password" id="password-input">
-                        <label class="active" for="name">Password</label>
-                    </div>
-
-                    <center>
-                        <button class="btn btn-large waves-effect waves-light z-depth-3 light-blue darken-3"
-                            id='enter'>Login
-                            <i id="enter" class="material-icons right">send</i>
-                        </button>
-                        <a href='/register' class="btn btn-large waves-effect waves-light z-depth-3 light-blue darken-3"
-                            id='enter'>Register
-                            <i id="enter" class="material-icons right">create</i></a>
-                        </button>
-                        <div id="wrong-password"></div>
-                    </center>
-            </div>
+    <form class="darken-1 container" id="card-container">
+        <div class="darken-1 container" id="card-2">
+            <form>
+                
+                 <h4 class="left-align">Log In</h4>
+                <div class="input-field">
+                    <input type="text" id="username-input">
+                    <label class="active" for="name">Username</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="password-input">
+                    <label class="active" for="name">Password</label>
+                </div>
+                <center>
+                    <button class="btn btn-large waves-effect waves-light z-depth-3 light-blue darken-3"
+                        id='enter'>Login
+                        <i id="enter" class="material-icons right">send</i>
+                    </button>
+                    <a href='/register' class="btn btn-large waves-effect waves-light z-depth-3 light-blue darken-3"
+                        id='enter'>Register
+                        <i id="enter" class="material-icons right">create</i></a>
+                    </button>
+                    <div id="wrong-password"></div>
+                </center>
+        </div>
 
 
         </form>

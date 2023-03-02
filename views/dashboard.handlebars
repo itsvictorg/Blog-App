@@ -1,33 +1,56 @@
 <html>
 
 <head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Dashboard</title>
 </head>
 
 <body>
-     <nav>
-    <div class="nav-wrapper">
+     <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+    })
+  </script>
+
+  <nav class = "blue">
+    <div class = "nav-wrapper">
       <a href="#" class="brand-logo">The Tech Blog</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      
+      <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+        <i class ="material-icons">menu</i>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
         <li><a href="/homepage">Home</a></li>
-        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/Dashboard">Dashboard</a></li>
         <li><a href="/login">Log In</a></li>
         <li><a href = "" id = 'logout'>Logout</a>
       </ul>
     </div>
   </nav>
 
+  <ul id="mobile-nav" class="sidenav">
+        <li><a href="/homepage">Home</a></li>
+        <li><a href="/Dashboard">Dashboard</a></li>
+        <li><a href="/login">Log In</a></li>
+        <li><a href = "" id = 'logout'>Logout</a>
+      </ul>
+
   {{#if posts.length}}
-<section>
+<section class = " darken-1 container">
+  <h2>{{User.user_name}}</h2>
   <h2>Your Posts</h2>
+  <button type="submit" class="btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3" id = "new-post"><a href="/dashboard/new">Add New Post</a></button>
+</section>
+
   <ol class="post-list">
     {{#each posts as |post|}}
     <div>
-      {{> post-info post}}      
+      {{> post-info-account post}}      
     </div>
     {{/each}}
   </ol>
-</section>
+
 {{else}}
 <center>
 <section>
@@ -36,7 +59,7 @@
 </center>
 {{/if}}
 <center>
-<button type="submit" class="btn btn-large waves-effect waves-light z-depth-3 light-blue darken-3" id = "new-post"><a href="/dashboard/new">Add New Post</a></button>
+
 </center>
     <script src="./js/logout.js"></script>
 </body>
