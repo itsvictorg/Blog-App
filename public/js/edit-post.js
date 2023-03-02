@@ -27,4 +27,4 @@ async function editFormHandler(event) {
   }
 }
 
-document.getElementById('save-changes').addEventListener('submit', editFormHandler);
+document.getElementById('save-changes').addEventListener('click', editFormHandler);

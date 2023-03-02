@@ -7,7 +7,7 @@
 
 <body>
      <script>
-    $(document).ready(function(){
+    $(document).ready(function(){t!
       $('.sidenav').sidenav();
     })
   </script>
@@ -22,7 +22,7 @@
 
       <ul class="right hide-on-med-and-down">
         <li><a href="/homepage">Home</a></li>
-        <li><a href="/dashboard">Your Posts</a></li>
+        <li><a href="/Dashboard">Dashboard</a></li>
         <li><a href="/login">Log In</a></li>
         <li><a href = "" id = 'logout'>Logout</a>
       </ul>
@@ -31,7 +31,7 @@
 
   <ul id="mobile-nav" class="sidenav">
         <li><a href="/homepage">Home</a></li>
-        <li><a href="/Dashboard">Dashboard</a></li>
+        <li><a href="/Dashboard">Your Posts</a></li>
         <li><a href="/login">Log In</a></li>
         <li><a href = "" id = 'logout'>Logout</a>
       </ul>
@@ -40,7 +40,7 @@
 <section class = " darken-1 container">
   <h2>{{User.user_name}}</h2>
   <h2>Your Posts</h2>
-  <button type="submit" class="btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3" id = "new-post"><a href="/dashboard/new">Add New Post</a></button>
+  <button type="button" class="btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3" id = "new-post"><a href="/dashboard/new">Add New Post</a></button>
 </section>
 
   <ol class="post-list">
@@ -55,7 +55,7 @@
 <center>
 <section>
   <h3>You haven't posted anything yet</h3>
-  <button type="submit" class="btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3" id = "new-post"><a href="/dashboard/new">Add New Post</a></button>
+  <button type="button" class="btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3" id = "new-post"><a href="/dashboard/new">Add New Post</a></button>
 </section>
 </center>
 {{/if}}

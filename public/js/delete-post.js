@@ -5,15 +5,15 @@ async function deleteFormHandler(event) {
       window.location.toString().split('/').length-1
     ];
   
-    const response = await fetch(`/api/posts/${id}`, {
+    const response = await fetch(`/api/post/${id}`, {
       method: 'DELETE',    
     });    
   
     if (response.ok) {
-      document.location.replace('/dashboard/');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
   }
   
-  document.querySelector('.delete-post-btn').addEventListener('click', deleteFormHandler);
+  document.getElementById('delete-post').addEventListener('click', deleteFormHandler);
