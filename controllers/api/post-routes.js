@@ -3,7 +3,7 @@ const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   Post.findAll({
     attributes: ['id', 'title', 'post_text', 'created_at'],
     order: [['created_at', 'DESC']],
@@ -45,7 +45,7 @@ router.get('/:id', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['user_name']
         }
       }
     ]
@@ -64,14 +64,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {  
-  const randomId = Math.trunc(Math.random() * (9999 - 1111) + 1111)
-console.log(req.session.data.id)
   Post.create({
-    id: randomId,
     title: req.body.title,
     post_text: req.body.post_text,
-    user_id: req.session.data.id
-    
+    user_id: req.session.user_id
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -81,6 +77,7 @@ console.log(req.session.data.id)
 });
 
 router.put('/:id', withAuth, (req, res) => {
+ 
   Post.update(
     {
       title: req.body.title,
