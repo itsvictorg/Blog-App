@@ -16,7 +16,7 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/homepage');
+        document.location.replace('/login');
         alert('account created, please log in!')
       } else {
         alert('Please fill in all forms');

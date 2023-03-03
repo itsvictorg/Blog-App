@@ -17,6 +17,7 @@ const { User, Post } = require('../../models');
     req.session.save(() => {
       
       req.session.data = [dbUserData]
+      req.session.loggedIn = false;
       
       console.log(req.session.data)
       
