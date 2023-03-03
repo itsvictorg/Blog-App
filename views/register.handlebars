@@ -8,38 +8,9 @@
 <body>
     
     
-   <script>
-    $(document).ready(function(){
-      $('.sidenav').sidenav();
-    })
-  </script>
+   {{> nav}}
 
-  <nav class = "blue">
-    <div class = "nav-wrapper">
-      <a href="#" class="brand-logo">The Tech Blog</a>
-      
-      <a href="#" class="sidenav-trigger" data-target="mobile-nav">
-        <i class ="material-icons">menu</i>
-      </a>
-
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/homepage">Home</a></li>
-        <li><a href="/Dashboard">Dashboard</a></li>
-        <li><a href="/login">Log In</a></li>
-        <li><a href = "" id = 'logout'>Logout</a>
-      </ul>
-    </div>
-  </nav>
-
-  <ul id="mobile-nav" class="sidenav">
-        <li><a href="/homepage">Home</a></li>
-        <li><a href="/Dashboard">Dashboard</a></li>
-        <li><a href="/login">Log In</a></li>
-        <li><a href = "" id = 'logout'>Logout</a>
-      </ul>
-
-
-        <div class="card-content padding-100px" id="card-2">
+<div class="card-content padding-100px" id="card-2">
 
 <h1 class="center-align">Register Account</h1>  
 
