@@ -1,20 +1,24 @@
 {{> nav}}
-
+<center>
+<section disabled class = "darken-1 container">
 {{> post-info post}}
-
+</section>
+</center>
 {{#if loggedIn}}
-<form class="comment-form">
-  <div>
+<center>
+<div class=" darken-1 section container">
+  <div class="container">
     <textarea name="comment-body"></textarea>
   </div>
 
   <div>
-    <button type="submit">add comment</button>    
+    <button type="submit" class ='btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3'>add comment</button>    
   </div>
-</form>
+</div>
+</center>
 {{/if}}
 
-{{> comments post.comments}}
+
 
 {{#if loggedIn}}
 <script src="./js/comment.js"></script>

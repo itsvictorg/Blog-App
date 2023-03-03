@@ -10,54 +10,41 @@ router.get('/', async (req, res) => {
 
 router.get('/homepage', async (req, res) => {
     
-      try{  
-      const dbPostData = await Post.findAll({
-          attributes: [
-            'id',
-            'title',
-            "post_text",
-            'created_at'      
-          ],
-          include: [
-            {
-              model: Comment,
-              attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-              include: {
-                model: User,
-                attributes: ['user_name']
-              }
-            },
-            {
-              model: User,
-              attributes: ['user_name']
-            }
-          ]
-        })
-        const posts = dbPostData.map(post => post.get({ plain: true }));
-           
-            res.render('homepage', { 
-              posts,
-              loggedIn: req.session.loggedIn 
-            });
-          }catch(err) {
-            console.log(err);
-            res.status(500).json(err);
-          };
-        });
-          //.then(dbPostData => {
-        //  const posts = dbPostData.map(post => post.get({ plain: true }));
-        // 
-        //  res.render('homepage', { 
-        //    posts,
-        //    loggedIn: req.session.loggedIn 
-        //  });
-        //})
-        //.catch(err => {
-        //  console.log(err);
-        //  res.status(500).json(err);
-        //});
-      //
-    //res.render('homepage');
+  try{  
+    const dbPostData = await Post.findAll({
+      attributes: [
+        'id',
+        'title',
+        "post_text",
+        'created_at'      
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['user_name']
+          }
+        },
+        {
+          model: User,
+          attributes: ['user_name']
+        }
+      ]
+    })
+    const posts = dbPostData.map(post => post.get({ plain: true }));
+       
+    res.render('homepage', { 
+      posts,
+      loggedIn: req.session.loggedIn 
+    });
+  }catch(err) {
+    console.log(err);
+    res.status(500).json(err);
+  };
+});
+         
 
 
 
