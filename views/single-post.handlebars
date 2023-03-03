@@ -1,6 +1,6 @@
 {{> nav}}
 <center>
-<section disabled class = "darken-1 container">
+<section style = "pointer-events: none;" class = "darken-1 container">
 {{> post-info post}}
 </section>
 </center>
@@ -12,14 +12,17 @@
   </div>
 
   <div>
-    <button type="submit" class ='btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3'>add comment</button>    
+    <button type="button" class ='btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3' id = "comment-btn">add comment</button>    
   </div>
 </div>
 </center>
 {{/if}}
 
 
+{{> comments post.Comments}}
+
 
 {{#if loggedIn}}
-<script src="./js/comment.js"></script>
+<script src="/js/comment.js"></script>
 {{/if}}
+

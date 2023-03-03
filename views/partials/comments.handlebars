@@ -1,0 +1,15 @@
+<center>
+<div class="comments  darken-1 container">
+    <h5>Comments</h5>
+  {{#each this}}
+  <section class="card grey lighten-3  container">
+    <div>
+      {{User.user_name}} on {{format_date created_at}}
+    </div>
+    <div class="text">
+      {{comment_text}}
+    </div>
+  </section>
+  {{/each}}
+</div>
+</center>
