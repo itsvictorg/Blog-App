@@ -27,9 +27,10 @@ router.get('/', withAuth, async (req, res) => {
       }
     ]
   })
-  const posts = dbPostData.map(post => post.get({ plain: true }));
-  
-  console.log(userData)
+  const reversedPosts = dbPostData.map(post => post.get({ plain: true }));
+const posts = reversedPosts.reverse()  
+console.log(reversedPosts)
+console.log(posts)
   
 
   res.render('dashboard', { posts, userData, loggedIn: true });

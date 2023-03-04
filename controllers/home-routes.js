@@ -34,8 +34,9 @@ router.get('/homepage', async (req, res) => {
         }
       ]
     })
-    const posts = dbPostData.map(post => post.get({ plain: true }));
-       console.log(posts)
+    const reversedPosts = dbPostData.map(post => post.get({ plain: true }));
+    const posts = reversedPosts.reverse()  
+
     res.render('homepage', { 
       posts,
       userData,
@@ -91,6 +92,7 @@ router.get('/post/:id', (req, res) => {
       }
       
       const post = dbPostData.get({ plain: true });
+      
       console.log(dbPostData)
   
       
