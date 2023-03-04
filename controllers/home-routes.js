@@ -53,7 +53,7 @@ router.get('/homepage', async (req, res) => {
 
 router.get('/post/:id', (req, res) => {
     const userData = req.session.data;
-    console.log(userData)
+    //console.log(userData)
     Post.findOne({
       where: {
         id: req.params.id
@@ -93,12 +93,13 @@ router.get('/post/:id', (req, res) => {
       
       const post = dbPostData.get({ plain: true });
       
-      console.log(dbPostData)
+      console.log(post)
   
       
       res.render('single-post', {
         post, 
         userData,
+        dbPostData,
         loggedIn: req.session.loggedIn
       });
     })
@@ -136,11 +137,33 @@ router.get('/post/:id', (req, res) => {
     })
     const posts = dbPostData.map(post => post.get({ plain: true }));
     
-    console.log(posts)
+    const thisUser  = await Post.findOne({
+        where: { 
+            user_id: req.params.user_id
+        },
+        attributes: ['id', 'title', 'post_text', 'created_at'],
+        order: [['created_at', 'DESC']],
+        include: [
+          {
+            model: User,
+            attributes: ['user_name', 'id']
+          },
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+              model: User,
+              attributes: ['user_name']
+            }
+          }
+        ]
+    })
+   
+ const thisUserName = thisUser.User.dataValues.user_name
     
   
-    res.render('single-user', { posts, userData, loggedIn: true });
-  
+    res.render('single-user', { posts, userData, thisUser, thisUserName, loggedIn: true });
+    
   } catch(err) {
     console.log(err)
     res.status(500).json(err);
@@ -155,9 +178,9 @@ router.get('/register', (req, res) => {
 router.get('/login', (req, res) =>{
     const userData = req.session.data;
     if(!req.session.loggedIn){
-    res.render('login', {userData})
+    res.render('login')
   } else{
-    res.redirect('/homepage', {userData});
+    res.redirect('/homepage');
   }
 })
 

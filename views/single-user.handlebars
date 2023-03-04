@@ -2,7 +2,7 @@
 
 <head>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>{{userData.user_name}}</title>
+    <title>{{thisUserName}}</title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
 
   {{#if posts.length}}
 <section class = "darken-1 container">
- <h3>{{userData.user_name}}'s Posts</h3>
+ <h3>{{thisUserName}}'s Posts</h3>
 </section>
 
   <ol class="post-list">
