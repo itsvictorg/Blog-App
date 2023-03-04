@@ -27,7 +27,7 @@ router.get('/', withAuth, async (req, res) => {
       }
     ]
   })
-  const reversedPosts = dbPostData.map(post => post.get({ plain: true }));
+const reversedPosts = dbPostData.map(post => post.get({ plain: true }));
 const posts = reversedPosts.reverse()  
 console.log(reversedPosts)
 console.log(posts)
