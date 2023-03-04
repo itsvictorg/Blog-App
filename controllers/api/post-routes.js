@@ -4,6 +4,7 @@ const withAuth = require('../../utils/auth');
 
 
 router.get('/', async (req, res) => {
+  const userData = req.session.data;
   Post.findAll({
     attributes: ['id', 'title', 'post_text', 'created_at'],
     order: [['created_at', 'DESC']],

@@ -1,0 +1,38 @@
+<html>
+
+<head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>{{userData.user_name}}</title>
+</head>
+
+<body>
+  
+     {{> nav}}
+
+  {{#if posts.length}}
+<section class = "darken-1 container">
+ <h3>{{userData.user_name}}'s Posts</h3>
+</section>
+
+  <ol class="post-list">
+    {{#each posts as |post|}}
+    <div>
+      {{> post-info-account post}}      
+    </div>
+    {{/each}}
+  </ol>
+
+{{else}}
+<center>
+<section>
+  <h3>User hasn't posted anything yet</h3>
+</section>
+</center>
+{{/if}}
+<center>
+
+</center>
+    <script src="/js/logout.js"></script>
+</body>
+
+</html>

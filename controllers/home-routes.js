@@ -9,12 +9,13 @@ router.get('/', async (req, res) => {
 
 
 router.get('/homepage', async (req, res) => {
-    
+    const userData = req.session.data;
   try{  
     const dbPostData = await Post.findAll({
       attributes: [
         'id',
         'title',
+        'user_id',
         "post_text",
         'created_at'      
       ],
@@ -24,7 +25,7 @@ router.get('/homepage', async (req, res) => {
           attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
           include: {
             model: User,
-            attributes: ['user_name']
+            attributes: ['user_name', 'id']
           }
         },
         {
@@ -34,9 +35,10 @@ router.get('/homepage', async (req, res) => {
       ]
     })
     const posts = dbPostData.map(post => post.get({ plain: true }));
-       
+       console.log(posts)
     res.render('homepage', { 
       posts,
+      userData,
       loggedIn: req.session.loggedIn 
     });
   }catch(err) {
@@ -49,6 +51,8 @@ router.get('/homepage', async (req, res) => {
 
 
 router.get('/post/:id', (req, res) => {
+    const userData = req.session.data;
+    console.log(userData)
     Post.findOne({
       where: {
         id: req.params.id
@@ -92,6 +96,7 @@ router.get('/post/:id', (req, res) => {
       
       res.render('single-post', {
         post, 
+        userData,
         loggedIn: req.session.loggedIn
       });
     })
@@ -101,15 +106,56 @@ router.get('/post/:id', (req, res) => {
     });
   });
 
+  router.get('/user/:user_id', async (req, res) => {
+    const userData = req.session.data;
+    //console.log(req.params.user_id)
+    //console.log(userData)
+    try{
+      const dbPostData = await Post.findAll({
+      where: {
+        user_id: req.params.user_id
+      },
+      attributes: ['id', 'title', 'post_text', 'created_at'],
+      order: [['created_at', 'DESC']],
+      include: [
+        {
+          model: User,
+          attributes: ['user_name', 'id']
+        },
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['user_name']
+          }
+        }
+      ]
+    })
+    const posts = dbPostData.map(post => post.get({ plain: true }));
+    
+    console.log(posts)
+    
+  
+    res.render('single-user', { posts, userData, loggedIn: true });
+  
+  } catch(err) {
+    console.log(err)
+    res.status(500).json(err);
+  };
+  });
+
 router.get('/register', (req, res) => {
-  res.render('register');
+    const userData = req.session.data;
+    res.render('register', {userData});
 });
 
 router.get('/login', (req, res) =>{
-  if(!req.session.loggedIn){
-    res.render('login')
+    const userData = req.session.data;
+    if(!req.session.loggedIn){
+    res.render('login', {userData})
   } else{
-    res.redirect('/homepage');
+    res.redirect('/homepage', {userData});
   }
 })
 

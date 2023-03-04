@@ -18,7 +18,9 @@
       <i class ="material-icons">menu</i>
     </a>
     <ul class="right hide-on-med-and-down">
+      {{#if loggedIn}}
         <li><a href = "" style = "pointer-events: none;">logged in as {{userData.user_name}}</a></li>
+      {{/if}}
         <li><a href="/homepage">Home</a></li>
         <li><a href="/dashboard">Your Posts</a></li>
         <li><a href="/login">Log In</a></li>
