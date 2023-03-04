@@ -1,10 +1,21 @@
-<a href="post/{{id}}"></a>
-  <div class="card grey lighten-3  container section">
-    <div class="card-content black-text padding 10px ">
-      <h5>Posted By {{User.user_name}} on {{format_date created_at}}</h5>
+<div class="card grey lighten-3 container">
+    <div class="card-content black-text">
+      
+      <a href = "/user/{{user_id}}" style=" pointer-events:none; font-size: 30px; font-style:italic">
+        {{User.user_name}}
+      </a>
+      
+      <h5>on {{format_date created_at}}</h5>
+
       <h3>{{title}}</h3>
       <p>{{post_text}}</p>
-      <section class="section">
+      <br>
+      <p class = "deep-orange-text lighten-2">{{Comments.length}} comments</p>
+    </div>
+      
+      <section class="section card-content">
       <a href = "/dashboard/edit/{{id}}" class="btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3">Edit</a>
       </section>
-    </div>    
+
+    </div>  
+    

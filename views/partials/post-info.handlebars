@@ -1,21 +1,17 @@
-<a href="post/{{id}}">
+<div onclick = window.location.href="post/{{id}}" style = "cursor:pointer">
   <div class="card grey lighten-3 container">
     <div class="card-content black-text">
-      <h5>
-        Posted By
-      </h5>
       
-      <a href = "/user/{{user_id}}">
+      <a href = "/user/{{user_id}}" style="font-size: 30px; font-style:italic">
         {{User.user_name}}
       </a>
-
-      <h5>
-        on {{format_date created_at}}
-      </h5>
+      
+      <h5>on {{format_date created_at}}</h5>
 
       <h3>{{title}}</h3>
       <p>{{post_text}}</p>
       <br>
       <p class = "deep-orange-text lighten-2">{{Comments.length}} comments</p>
     </div>
-</a>    
+</div>  
+</div>  
