@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 
 
 router.get('/', withAuth, async (req, res) => {
- 
+  const userData = req.session.data;
   try{
     const dbPostData = await Post.findAll({
     where: {
@@ -28,10 +28,11 @@ router.get('/', withAuth, async (req, res) => {
     ]
   })
   const posts = dbPostData.map(post => post.get({ plain: true }));
+  
+  console.log(userData)
+  
 
-  console.log(dbPostData)
-
-  res.render('dashboard', { posts, loggedIn: true });
+  res.render('dashboard', { posts, userData, loggedIn: true });
 
 } catch(err) {
   console.log(err)
