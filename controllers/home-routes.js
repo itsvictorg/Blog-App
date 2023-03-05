@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
 
 router.get('/homepage', async (req, res) => {
     const userData = req.session.data;
+    console.log(req.session.data)
   try{  
     const dbPostData = await Post.findAll({
       attributes: [
@@ -25,12 +26,12 @@ router.get('/homepage', async (req, res) => {
           attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
           include: {
             model: User,
-            attributes: ['user_name', 'id']
+            attributes: ['user_name', 'id',]
           }
         },
         {
           model: User,
-          attributes: ['user_name']
+          attributes: ['user_name', 'id', 'isAdmin']
         }
       ]
     })
@@ -93,15 +94,13 @@ router.get('/post/:id', (req, res) => {
       }
       
       const post = dbPostData.get({ plain: true });
-      
-      console.log(post)
-  
-      
+      console.log(req.session.data)
       res.render('single-post', {
         post, 
         userData,
         dbPostData,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        isAdmin : req.session.data.isAdmin
       });
     })
     .catch(err => {

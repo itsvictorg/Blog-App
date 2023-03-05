@@ -9,9 +9,14 @@
       <h5>on {{format_date created_at}}</h5>
 
       <h3>{{title}}</h3>
-      <p>{{post_text}}</p>
+      <p style = "white-space: pre-wrap;">{{post_text}}</p>
       <br>
       <p class = "deep-orange-text lighten-2">{{Comments.length}} comments</p>
     </div>
+{{#if isAdmin}}
+  <section class="section card-content">
+      <a href = "/dashboard/edit/{{id}}" class="btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3">Edit</a>
+      </section>
+{{/if}}
 </div>  
 </div>  

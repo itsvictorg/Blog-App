@@ -3,6 +3,13 @@
 <section style = "pointer-events: none;" class = "darken-1 container">
 {{> post-info post}}
 </section>
+
+{{#if isAdmin}}
+  <section class="section card-content">
+      <a href = "../dashboard/edit/{{post.id}}" class="btn btn-small waves-effect waves-light z-depth-3 light-blue darken-3">Edit</a>
+      </section>
+{{/if}}
+
 </center>
 {{#if loggedIn}}
 <center>
