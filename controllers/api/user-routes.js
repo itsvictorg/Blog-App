@@ -47,6 +47,8 @@ router.post('/login', async (req, res) => {
     console.log(dbUserData)
   if(dbUserData.dataValues.user_name === 'itsvictorg'){
     dbUserData.dataValues.isAdmin = true;
+  } else {
+    dbUserData.dataValues.isAdmin = false;
   }
    console.log(dbUserData)
     if (!dbUserData) {
